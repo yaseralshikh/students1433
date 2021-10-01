@@ -1,27 +1,22 @@
 <div>
-    <div class="flex flex-col mt-8">
-        {{-- <div class="justify-center">
-            <div class="transform scale-60 md:scale-25">
-              <img src="https://www.creative-tim.com/learning-lab/tailwind-starter-kit/img/team-1-800x800.jpg" alt="..." class="h-auto max-w-full align-middle border-none rounded shadow" />
-            </div>
-        </div> --}}
 
+    <div class="flex flex-col mt-8">
         <h1 class="text-2xl font-black text-center">تحديث ارقام جوالات الطلاب الموهوبين</h1>
         <h1 class="text-base font-black text-center">لضمان استمرارية تقديم الرعاية للطلاب الموهوبين نعمل على تحديث بيانات التواصل</h1>
+
+        <div class="flex flex-col justify-center mt-8 sm:flex-row">
+            <div class="relative">
+                <select name="school" wire:change="changeSchool($event.target.value)" class="block w-full h-full px-4 py-2 pr-8 leading-tight text-gray-700 bg-white border-t border-b border-r border-gray-400 rounded-r appearance-none sm:rounded-r-none sm:border-r-0 focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
+                    <option value=''>اختر المدرسة</option>
+                    @foreach($schools as $school)
+                        <option value={{ $school->id }}>{{ $school->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+        </div>
     </div>
 
     <hr class="flex flex-col mt-8">
-
-    <div class="flex-col mt-8 text-center">
-        <label class="inline-block w-32 font-bold">المدرسة :</label>
-        <select name="school" wire:click="changeSchool($event.target.value)" class="h-10 pl-5 pr-10 text-gray-600 bg-white border border-gray-300 rounded-full appearance-none hover:border-gray-400 focus:outline-none">
-            <option value=''>اختر المدرسة</option>
-            @foreach($schools as $school)
-                <option value={{ $school->id }}>{{ $school->name }}</option>
-            @endforeach
-        </select>
-    </div>
-
 
     @if(count($students) > 0)
         <div class="flex flex-col mt-8">
