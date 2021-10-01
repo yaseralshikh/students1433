@@ -1,5 +1,8 @@
 <div>
-
+    <div class="bg-rose-300 ...">
+        <img class="object-contain w-full h-20" src="{{ asset('images/logo.png') }}">
+    </div>
+    
     <div class="flex flex-col mt-8">
         <h1 class="text-2xl font-black text-center">تحديث ارقام جوالات الطلاب الموهوبين</h1>
         <h1 class="text-base font-black text-center">لضمان استمرارية تقديم الرعاية للطلاب الموهوبين نعمل على تحديث بيانات التواصل</h1>
@@ -9,7 +12,7 @@
                 <select name="school" wire:change="changeSchool($event.target.value)" class="block w-full h-full px-4 py-2 pr-8 leading-tight text-gray-700 bg-white border-t border-b border-r border-gray-400 rounded-r appearance-none sm:rounded-r-none sm:border-r-0 focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
                     <option value=''>اختر المدرسة</option>
                     @foreach($schools as $school)
-                        <option value={{ $school->id }}>{{ $school->name }}</option>
+                        <option value={{ $school->id }}>{{ $school->name }} ( {{ $school->students->count() }} )</option>
                     @endforeach
                 </select>
             </div>
@@ -25,15 +28,13 @@
                     <table class="max-w-4xl min-w-full mx-auto w-ful">
                         <thead>
                             <tr>
-                                <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-center text-gray-500 uppercase border-b border-gray-200 bg-gray-50">#</th>
-                                <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-center text-gray-500 uppercase border-b border-gray-200 bg-gray-50">الاسم</th>
-                                <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-center text-gray-500 uppercase border-b border-gray-200 bg-gray-50">المدرسة</th>
-                                <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-center text-gray-500 uppercase border-b border-gray-200 bg-gray-50">الصف</th>
-                                <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-center text-gray-500 uppercase border-b border-gray-200 bg-gray-50">المرحلة</th>
-                                <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-center text-gray-500 uppercase border-b border-gray-200 bg-gray-50">الحالة</th>
-                                <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-center text-gray-500 uppercase border-b border-gray-200 bg-gray-50">
-                                    <i class="pr-1 fa fa-pencil-square-o" aria-hidden="true"></i>{{ __(' تحديث ') }}
-                                </th>
+                                <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-center text-gray-100 uppercase bg-gray-700 border-b border-gray-400">#</th>
+                                <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-center text-gray-100 uppercase bg-gray-700 border-b border-gray-400">الاسم</th>
+                                <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-center text-gray-100 uppercase bg-gray-700 border-b border-gray-400">المدرسة</th>
+                                <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-center text-gray-100 uppercase bg-gray-700 border-b border-gray-400">الصف</th>
+                                <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-center text-gray-100 uppercase bg-gray-700 border-b border-gray-400">المرحلة</th>
+                                <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-center text-gray-100 uppercase bg-gray-700 border-b border-gray-400">الحالة</th>
+                                <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-center text-gray-100 uppercase bg-gray-700 border-b border-gray-400">تحديث </th>
                             </tr>
                         </thead>
 

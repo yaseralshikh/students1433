@@ -22,44 +22,44 @@
         @livewireStyles
 
     </head>
-    <body class="flex items-center justify-center h-screen overflow-hidden" style="background: #edf2f7;">
-        <body class="font-sans antialiased bg-gray-200">
-            <div class="container px-4 mx-auto sm:px-8">
-                <div class="py-8">
 
-                    <x-jet-banner />
+    <body class="font-sans antialiased bg-gray-200">
+        <div class="container px-4 mx-auto sm:px-8">
+            <x-jet-banner />
 
-                    <div class="min-h-screen bg-gray-100">
-                        @livewire('navigation-menu')
+            <div class="min-h-screen bg-gray-100">
+                @livewire('navigation-menu')
 
-                        <!-- Page Heading -->
-                        @if (isset($header))
-                            <header class="bg-white shadow">
-                                <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
-                                    {{ $header }}
-                                </div>
-                            </header>
-                        @endif
+                <!-- Page Heading -->
+                @if (isset($header))
+                    <header class="bg-white shadow">
+                        <div class="px-4 py-6 mx-auto max-w-7xl sm:px-6 lg:px-8">
+                            {{ $header }}
+                        </div>
+                    </header>
+                @endif
 
-                        <!-- Page Content -->
-                        <main>
-                            {{ $slot }}
-                        </main>
-                    </div>
-
-                </div>
+                <!-- Page Content -->
+                <main>
+                    {{ $slot }}
+                </main>
             </div>
 
-            @stack('modals')
+            <footer class="bottom-0 p-2 text-center text-white bg-gray-700 border-t-2 border-gray-500">
+                رئيس وحدة الموهوبين / ياسر محمد الشيخ
+            </footer>
 
-            @livewireScripts
+        </div>
+
+        @stack('modals')
+
+        @livewireScripts
 
 
-            <!-- Scripts -->
-            <script src="{{ mix('js/app.js') }}" defer></script>
+        <!-- Scripts -->
+        <script src="{{ mix('js/app.js') }}" defer></script>
 
-            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-            <x-livewire-alert::scripts />
-        </body>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+        <x-livewire-alert::scripts />
     </body>
 </html>

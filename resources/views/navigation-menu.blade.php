@@ -1,4 +1,4 @@
-<nav class="w-full py-4 bg-blue-800 shadow">
+<nav class="w-full py-4 bg-gray-700 shadow">
     <div class="container flex flex-wrap items-center justify-between w-full mx-auto">
 
         <nav>
@@ -7,7 +7,7 @@
             </ul>
         </nav>
 
-        <div class="flex items-center pr-6 text-lg text-white no-underline">
+        <div class="flex items-center pr-6 text-sm text-white no-underline">
             <a class="pl-6" href="https://www.instagram.com/yaser95/" target="blank">
                 <i class="fab fa-instagram"></i>
             </a>
