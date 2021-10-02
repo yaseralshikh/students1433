@@ -2,7 +2,7 @@
     <div class="bg-rose-300 ...">
         <img class="object-contain w-full h-20" src="{{ asset('images/logo.png') }}">
     </div>
-    
+
     <div class="flex flex-col mt-8">
         <h1 class="text-2xl font-black text-center">تحديث ارقام جوالات الطلاب الموهوبين</h1>
         <h1 class="text-base font-black text-center">لضمان استمرارية تقديم الرعاية للطلاب الموهوبين نعمل على تحديث بيانات التواصل</h1>
@@ -38,7 +38,7 @@
                             </tr>
                         </thead>
 
-                        <tbody class="bg-white">
+                        <tbody class="text-center bg-white">
                             @foreach($students as $index=> $student)
                                 <tr>
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200" scope="row">

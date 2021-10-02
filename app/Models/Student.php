@@ -16,4 +16,10 @@ class Student extends Model
         return $this->belongsTo(School::class);
 
     }//end fo school
+
+    public static function search($query)
+    {
+        return empty($query) ? static::query()
+            : static::where('name', 'like', '%'.$query.'%');
+    }
 }
