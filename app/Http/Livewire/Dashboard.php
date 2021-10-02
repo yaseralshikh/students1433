@@ -5,6 +5,8 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Models\Student;
 use Livewire\WithPagination;
+use App\Exports\StudentExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class Dashboard extends Component
 {
@@ -13,7 +15,7 @@ class Dashboard extends Component
     public $sortField = 'school_id';
     public $sortAsc = true;
     public $search = '';
-    public $changeStatus = '';
+    public $changeStatus= '';
 
     public function changeStatus($status)
     {
@@ -31,9 +33,14 @@ class Dashboard extends Component
         $this->sortField = $field;
     }
 
+    public function export()
+    {
+        return Excel::download(new StudentExport, 'students.xlsx');
+    }
+
     public function render()
     {
-        $students = Student::search($this->search)->Where('status', $this->changeStatus)->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate(50);
+        $students = Student::search($this->search)->Where('status', 'like','%'.$this->changeStatus.'%')->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')->paginate(50);
 
         return view('livewire.dashboard',[
             'students' => $students

@@ -1,31 +1,39 @@
 <div>
 
-    <div class="flex flex-col mx-4 my-4 sm:flex-row">
-        <div class="flex flex-row mb-1 sm:mb-0">
-            <div class="relative">
-                <select wire:change="changeStatus($event.target.value)"
-                    class="block w-full h-full px-4 py-2 pr-8 leading-tight text-gray-700 bg-white border-t border-b border-r border-gray-400 rounded-r appearance-none sm:rounded-r-none sm:border-r-0 focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
-                    <option value=''>الكل</option>
-                    <option value='1'>محدث</option>
-                    <option value='0'>غير محدث</option>
-                </select>
+    <div class="flow-root ">
+        <p class="float-left pl-10 text-green-600">
+            <a wire:click.prevent="export" role="button" href="#" class="mr-5 text-3xl text-green-700"><i class="fas fa-file-excel"></i></a>
+        </p>
+
+        <p class="float-right text-green-800">
+            <div class="flex flex-col mx-4 my-4 sm:flex-row">
+                <div class="flex flex-row mb-1 sm:mb-0">
+                    <div class="relative">
+                        <select wire:change="changeStatus($event.target.value)"
+                            class="block w-full h-full px-4 py-2 pr-8 leading-tight text-gray-700 bg-white border-t border-b border-r border-gray-400 rounded-r appearance-none sm:rounded-r-none sm:border-r-0 focus:outline-none focus:border-l focus:border-r focus:bg-white focus:border-gray-500">
+                            <option value='' >الحالة</option>
+                            <option value='1'>محدث</option>
+                            <option value='0'>غير محدث</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="relative block">
+                    <span class="absolute inset-y-0 left-0 flex items-center h-full pl-2">
+                        <svg viewBox="0 0 24 24" class="w-4 h-4 text-gray-500 fill-current">
+                            <path
+                                d="M10 4a6 6 0 100 12 6 6 0 000-12zm-8 6a8 8 0 1114.32 4.906l5.387 5.387a1 1 0 01-1.414 1.414l-5.387-5.387A8 8 0 012 10z">
+                            </path>
+                        </svg>
+                    </span>
+                    <input wire:model="search" type="text" placeholder="البحث باسم الطالب..." class="block w-full py-2 pl-8 pr-6 text-sm text-gray-700 placeholder-gray-400 bg-white border border-b border-gray-400 rounded-l rounded-r appearance-none sm:rounded-l-none focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none" />
+                </div>
             </div>
-        </div>
-        <div class="relative block">
-            <span class="absolute inset-y-0 left-0 flex items-center h-full pl-2">
-                <svg viewBox="0 0 24 24" class="w-4 h-4 text-gray-500 fill-current">
-                    <path
-                        d="M10 4a6 6 0 100 12 6 6 0 000-12zm-8 6a8 8 0 1114.32 4.906l5.387 5.387a1 1 0 01-1.414 1.414l-5.387-5.387A8 8 0 012 10z">
-                    </path>
-                </svg>
-            </span>
-            <input wire:model="search" type="text" placeholder="البحث باسم الطالب..." class="block w-full py-2 pl-8 pr-6 text-sm text-gray-700 placeholder-gray-400 bg-white border border-b border-gray-400 rounded-l rounded-r appearance-none sm:rounded-l-none focus:bg-white focus:placeholder-gray-600 focus:text-gray-700 focus:outline-none" />
-        </div>
+        </p>
     </div>
 
+
     @if(count($students) > 0)
-
-
 
     {{-- <div class="py-4">
         <x-table>
@@ -44,7 +52,7 @@
     </div> --}}
 
 
-        <div class="flex flex-col mt-8">
+        <div class="flex flex-col m-5 mt-8">
             <div class="py-2 -my-2 overflow-x-auto sm:-mx-6 sm:px-6 lg:-mx-8 lg:px-8">
                 <div class="inline-block min-w-full overflow-hidden align-middle border-b border-gray-200 shadow sm:rounded-lg">
                     <table class="max-w-4xl min-w-full mx-auto w-ful">
@@ -55,6 +63,7 @@
                                 <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-center text-gray-100 uppercase bg-gray-700 border-b border-gray-400"><a wire:click.prevent="sortBy('school_id')" role="button" href="#"> المدرسة @include('includes._sort-icon', ['field' => 'school_id'])</a></th>
                                 <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-center text-gray-100 uppercase bg-gray-700 border-b border-gray-400"><a wire:click.prevent="sortBy('class')" role="button" href="#"> الصف @include('includes._sort-icon', ['field' => 'class'])</a></th>
                                 <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-center text-gray-100 uppercase bg-gray-700 border-b border-gray-400"><a wire:click.prevent="sortBy('stage')" role="button" href="#"> المرحلة @include('includes._sort-icon', ['field' => 'stage'])</a></th>
+                                <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-center text-gray-100 uppercase bg-gray-700 border-b border-gray-400">الجوال</th>
                                 <th class="px-6 py-3 text-xs font-medium leading-4 tracking-wider text-center text-gray-100 uppercase bg-gray-700 border-b border-gray-400"><a wire:click.prevent="sortBy('status')" role="button" href="#"> الحالة @include('includes._sort-icon', ['field' => 'status'])</a></th>
                             </tr>
                         </thead>
@@ -76,6 +85,9 @@
                                     </td>
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                         <div class="text-sm leading-5 text-gray-500">{{ $student->stage }}</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
+                                        <div class="text-sm leading-5 text-gray-500">{{ $student->mobile }}</div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-200">
                                         <div class="text-sm leading-5 text-gray-500">
@@ -100,7 +112,7 @@
                 </div>
             </div>
         </div>
-        <div class="pt-4 pb-10">
+        <div class="pt-4 pb-10 m-5">
             {{ $students->links() }}
         </div>
     @endif
