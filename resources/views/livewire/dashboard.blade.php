@@ -2,7 +2,7 @@
 
     <div class="flow-root ">
         <p class="float-left pl-10 text-green-600">
-            <a wire:click.prevent="export" role="button" href="#" class="mr-5 text-3xl text-green-700"><i class="fas fa-file-excel"></i></a>
+            <a wire:click.prevent="export" role="button" href="#" class="p-1 pl-2 pr-2 text-green-500 text-green-700 bg-transparent border-2 border-green-500 rounded-lg text-1xl text-md hover:bg-green-500 hover:text-gray-100 focus:border-2 focus:border-green-300"><i class="fas fa-file-excel"></i> Excel</a>
         </p>
 
         <p class="float-right text-green-800">
